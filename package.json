@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Shareable pug-lint config",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint --ignore-path .gitignore . --fix"
   },
   "publishConfig": {
     "access": "public"
@@ -21,5 +23,33 @@
   "bugs": {
     "url": "https://github.com/luciancooper/pug-lint-config/issues"
   },
-  "homepage": "https://github.com/luciancooper/pug-lint-config#readme"
+  "homepage": "https://github.com/luciancooper/pug-lint-config#readme",
+  "commitlint": {
+    "extends": [
+      "@lcooper"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@lcooper"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.3",
+    "@lcooper/commitlint-config": "^1.0.0",
+    "@lcooper/eslint-config": "^1.0.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.19.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0"
+  }
 }
