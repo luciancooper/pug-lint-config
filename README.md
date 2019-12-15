@@ -1,0 +1,1 @@
+# @lcooper/pug-lint-config
